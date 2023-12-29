@@ -1,4 +1,5 @@
 'use client'
+
 import NoteForm from '@/components/NoteForm'
 // import {NoteContext} from '@/context/NoteContext'
 // import {useContext, useEffect} from 'react'

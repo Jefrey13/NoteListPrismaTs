@@ -4,7 +4,7 @@
 2. npm i prisma -D: *instalar primas*
 3. npx prisma init --datasource-provider `tipo de bd` ***inicializar prisma y su configuracion***
 4. npx prisma migrate dev --name `nombre de a  migracion` ***Convertir los modelos de prisma a sintaxi de db***
-5. 
+5. npm i react-icons
 
 `😉Instalar la extencion prisma`
 
@@ -13,10 +13,10 @@
 ## Carpetas utilizadas
 * libs: *Para tener codigo reutilizable*
 * components: *para tener los componentes de la aplicacion reutilizables*
-* context: *para agregar el contexto*
-* interfaces: *para trabajara con typescript*
+* context: *para agregar el contexto, este contextoe es el provider de react para que los componentes puedan acceder a datos del contexto global de react.*
+* interfaces: *para trabajara con typescript, son los tipos de datos que vamos a crear*
 * 
-**en libs/priam.ts: esta es el archivos para poder conectar prisma usando el modulo instalado a la hora de generar la migracion, puesto que este `prisma/client`: nos permitira poder conectarnos a la base de datos desde codigo generado por prisma, ya agrega los tipos de datos**
+**en libs/prisma.ts: esta es el archivos para poder conectar prisma usando el modulo instalado a la hora de generar la migracion, puesto que este `prisma/client`: nos permitira poder conectarnos a la base de datos desde codigo generado por prisma, ya agrega los tipos de datos**
 
 ``A la hora de estar trabajando con una instancia de prima client en desarrollo, cuando se ejecuta codigo de backend (que es cuando vamos a necesitar la coneccion de prima nextjs lo que hace es ejecutarse, por lo cual estara llamando conecciones innecesarias) por lo que creamos una validacion con el obejeto GLOBAL, para verificar si existe una coneccion.``
 
@@ -55,3 +55,26 @@ El crear un contexto para los componentes (se podria tambien por medio de los pr
 `🎇Consejo: hala hora de crear nuestra interfaces, si tenemos que crear una para trabajar con un tipo de datos, en ves de crear una, podemos simplemente importarla desde prisma, asi nos evitamos estar poniendo cada campo. *Esto como por ejemplo con la entidad Note del curso de prisma y ts*`
 
 Uso un `hook de ref`, para colocar el cursor en el primer input una ves que se han enviado los datos.
+
+### La definicion del contexto 🔊🔊
+<pre>
+♣ Definición del Tipo en TypeScript:
+
+loadNotes: () => Promise<void>;
+createNote: (note: CreatedNote) => Promise<void>;
+deleteNote: (id: number) => Promise<void>;
+
+*En esta parte, estás definiendo el tipo de las funciones que se esperan en el contexto de NoteContext. Aquí, se especifica que loadNotes no tiene argumentos y devuelve una promesa que no tiene un valor concreto (void). createNote toma un argumento note de tipo CreatedNote y también devuelve una promesa sin un valor concreto. deleteNote toma un argumento id de tipo number y devuelve una promesa sin un valor concreto.*
+
+♣ Valor Predeterminado en el Contexto:
+
+loadNotes: async () => {},
+createNote: async (note: CreatedNote) => {},
+deleteNote: async (id: number) => {},
+
+*En esta parte, estás proporcionando un valor predeterminado para el contexto. Estas funciones son simplemente implementaciones de las funciones definidas anteriormente. Sin embargo, estas implementaciones son funciones vacías y asincrónicas que no hacen nada. Están allí principalmente como marcadores de posición.*
+</pre>
+
+
+React icons npm i react-icons: vienen de un conjunto de bibliotecas sitio wed:
+[Reac Icon](https://react-icons.github.io/react-icons/ "iconos")
